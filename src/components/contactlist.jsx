@@ -15,7 +15,9 @@ class ContactList extends Component {
         this.setState({ query: e.target.value })
 
     }
-
+    reset=()=>{
+        this.setState({ query: '' })
+    }
     render() {
         const{query} = this.state;
         const {contacts} = this.props;
@@ -33,7 +35,10 @@ class ContactList extends Component {
                 </div>
             </div>
         {showContacts.length !== contacts.length &&(<div className='showing-contacts'>
-            <span >Showing {showContacts.length} of {contacts.length}</span></div>)}
+            <span >Now Showing {showContacts.length} of {contacts.length}
+            </span>
+            <button onClick={this.reset}>Show All</button>
+            </div>)}
             
             <ol className="contact-list">
                 {showContacts.map(contact => (
